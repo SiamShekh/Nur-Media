@@ -9,6 +9,7 @@ import { fetchDataFromApi } from "../utils/Api";
 import { Context } from "../context/ContextApi";
 import SuggestionVideoCard from "./SuggestionVideoCard";
 import RequestVideo from "../context/RequestVideo";
+import Loader from "../shared/loader";
 
 function VideoDetail() {
   const [video, setVideo] = useState();
@@ -39,10 +40,12 @@ function VideoDetail() {
   };
 
   const RequestVideos = RequestVideo('/video');
-
+  if (RequestVideos?.isPending) {
+    return <Loader/>
+  }
 
   return (
-    <div className="flex justify-center flex-row  bg-white dark:bg-black">
+    <div className="flex justify-center flex-row  bg-white dark:bg-black lg:mx-10">
       <div className="w-full max-w-[1280px] flex flex-col lg:flex-row">
         <div className="flex flex-col lg:w-[calc(100%-350px)] xl:w-[calc(100%-400px)] px-4 py-3 lg:py-6 overflow-y-auto">
           <div className="h-[200px] md:h-[400px] lg:h-[400px] xl:h-[550px] ml-[-16px] lg:ml-0 mr-[-16px] lg:mr-0">
@@ -58,7 +61,7 @@ function VideoDetail() {
           <div className="text-black dark:text-white font-semibold text-sm md:text-xl mt-4 line-clamp-2">
             {video?.title}
           </div>
-          <div className="flex justify-between flex-col md:flex-row mt-4">
+          <div className="flex justify-between flex-row mt-4">
             <div className="flex">
               <div className="flex items-start ">
                 <div className="flex h-11 w-11 rounded-full overflow-hidden">
@@ -82,13 +85,7 @@ function VideoDetail() {
               </div>
             </div>
             <div className="flex text-black dark:text-white mt-4 md:mt-0">
-              <div className="flex items-center justify-center h-11 px-6 rounded-3xl dark:bg-white/[0.15] bg-black/[0.2]">
-                <AiOutlineLike className="text-xl dark:text-white text-black mr-2" />
-                {`${abbreviateNumber(video?.stats?.views, 2)} `}
-              </div>
-              <div className="flex items-center justify-center h-11 px-6 rounded-3xl dark:bg-white/[0.15] bg-black/[0.2] ml-4">
-                {`${abbreviateNumber(video?.stats?.views, 2)} `}
-              </div>
+             
             </div>
           </div>
         </div>
