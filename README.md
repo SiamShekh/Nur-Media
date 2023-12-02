@@ -32,25 +32,7 @@ To set up the YouTube Clone on your local machine, follow the instructions below
 - [Node.js](https://nodejs.org) installed on your machine.
 - [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) package manager.
 
-### Installation
 
-1. Clone the repository:
-
-```bash
-git clone https://github.com/riteshk-007/Youtube-Clone.git
-```
-
-2. Navigate to the project directory:
-
-```bash
-cd Youtube-Clone
-```
-
-3. Install the dependencies:
-
-```bash
-npm install
-```
 
 ### Usage
 
