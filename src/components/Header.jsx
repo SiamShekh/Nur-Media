@@ -42,18 +42,7 @@ const Header = () => {
       {loading && <Loader />}
 
       <div className="flex h-5 items-center">
-        {pageName !== "video" && (
-          <div
-            className="flex md:hidden md:mr-6 mr-4 cursor-pointer items-center justify-center h-10 w-10 rounded-full hover:bg-[#8888]/[0.6]"
-            onClick={mobileMenuToggle}
-          >
-            {mobileMenu ? (
-              <CgClose className="dark:text-white text-black text-xl" />
-            ) : (
-              <SlMenu className="dark:text-white text-black text-xl" />
-            )}
-          </div>
-        )}
+       
         <Link to="/" className="flex h-5 items-center">
           <img
             className="hidden dark:hidden md:block h-8"
@@ -98,12 +87,7 @@ const Header = () => {
             <FiBell className="text-black dark:text-white text-xl cursor-pointer" />
           </div>
         </div>
-        <div className="flex h-8 w-8 overflow-hidden rounded-full md:ml-4 mx-1">
-          <img
-            src="https://xsgames.co/randomusers/assets/avatars/female/67.jpg"
-            className="w-full h-full object-cover"
-          />
-        </div>
+        
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { abbreviateNumber } from "js-abbreviation-number";
 import { fetchDataFromApi } from "../utils/Api";
 import { Context } from "../context/ContextApi";
 import SuggestionVideoCard from "./SuggestionVideoCard";
+import RequestVideo from "../context/RequestVideo";
 
 function VideoDetail() {
   const [video, setVideo] = useState();
@@ -37,8 +38,11 @@ function VideoDetail() {
     });
   };
 
+  const RequestVideos = RequestVideo('/video');
+
+
   return (
-    <div className="flex justify-center flex-row h-[calc(100%-56px)] bg-white dark:bg-black">
+    <div className="flex justify-center flex-row  bg-white dark:bg-black">
       <div className="w-full max-w-[1280px] flex flex-col lg:flex-row">
         <div className="flex flex-col lg:w-[calc(100%-350px)] xl:w-[calc(100%-400px)] px-4 py-3 lg:py-6 overflow-y-auto">
           <div className="h-[200px] md:h-[400px] lg:h-[400px] xl:h-[550px] ml-[-16px] lg:ml-0 mr-[-16px] lg:mr-0">
@@ -80,16 +84,16 @@ function VideoDetail() {
             <div className="flex text-black dark:text-white mt-4 md:mt-0">
               <div className="flex items-center justify-center h-11 px-6 rounded-3xl dark:bg-white/[0.15] bg-black/[0.2]">
                 <AiOutlineLike className="text-xl dark:text-white text-black mr-2" />
-                {`${abbreviateNumber(video?.stats?.views, 2)} Likes`}
+                {`${abbreviateNumber(video?.stats?.views, 2)} `}
               </div>
               <div className="flex items-center justify-center h-11 px-6 rounded-3xl dark:bg-white/[0.15] bg-black/[0.2] ml-4">
-                {`${abbreviateNumber(video?.stats?.views, 2)} Views`}
+                {`${abbreviateNumber(video?.stats?.views, 2)} `}
               </div>
             </div>
           </div>
         </div>
         <div className="flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px] hide">
-          {relatedVideos?.contents?.map((item, index) => {
+          {RequestVideos?.data?.data.map((item, index) => {
             if (item?.type !== "video") return false;
             return <SuggestionVideoCard key={index} video={item?.video} />;
           })}

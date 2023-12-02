@@ -5,11 +5,14 @@ import VideoDetail from "./components/VideoDetail";
 
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
+import useAxios from "./context/useAxios";
 
 function App() {
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
 
   return (
     <div className="flex flex-col h-full">
