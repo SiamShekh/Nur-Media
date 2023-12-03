@@ -5,45 +5,23 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { AiOutlineLike } from "react-icons/ai";
 import { abbreviateNumber } from "js-abbreviation-number";
 
-import { fetchDataFromApi } from "../utils/Api";
-import { Context } from "../context/ContextApi";
 import SuggestionVideoCard from "./SuggestionVideoCard";
 import RequestVideo from "../context/RequestVideo";
-import Loader from "../shared/loader";
+import Loading from "../shared/Loading";
 
-function VideoDetail() {
-  const [video, setVideo] = useState();
-  const [relatedVideos, setRelatedVideos] = useState();
+function VideoDetail(video) {
   const { id } = useParams();
-  const { setLoading } = useContext(Context);
 
-  useEffect(() => {
-    document.getElementById("root").classList.add("custom-h");
-    fetchVideoDetails();
-    fetchRelatedVideos();
-    window.scrollTo(0, 0);
-  }, [id]);
 
-  const fetchVideoDetails = () => {
-    setLoading(true);
-    fetchDataFromApi(`video/details/?id=${id}`).then((res) => {
-      setVideo(res);
-      setLoading(false);
-    });
-  };
-  const fetchRelatedVideos = () => {
-    setLoading(true);
-    fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
-      setRelatedVideos(res);
-      setLoading(false);
-    });
-  };
+  const RequestVideosByID = RequestVideo(`/video/${id}`);
+  const RequestVideos = RequestVideo(`/video`);
 
-  const RequestVideos = RequestVideo('/video');
-  if (RequestVideos?.isPending) {
-    return <Loader/>
+  if (RequestVideosByID?.isPending || RequestVideos?.isPending) {
+    return <Loading />
   }
 
+  console.log();
+  
   return (
     <div className="flex justify-center flex-row  bg-white dark:bg-black lg:mx-10">
       <div className="w-full max-w-[1280px] flex flex-col lg:flex-row">
@@ -56,17 +34,18 @@ function VideoDetail() {
               height="100%"
               style={{ backgroundColor: "#00000" }}
               playing={true}
+              onProgress={true}
             />
           </div>
           <div className="text-black dark:text-white font-semibold text-sm md:text-xl mt-4 line-clamp-2">
-            {video?.title}
+            {RequestVideosByID?.data?.data?.video?.title}
           </div>
           <div className="flex justify-between flex-row mt-4">
             <div className="flex">
               <div className="flex items-start ">
                 <div className="flex h-11 w-11 rounded-full overflow-hidden">
                   <img
-                    src={video?.author?.avatar[0]?.url}
+                    src={RequestVideosByID?.data?.data?.video?.author?.avatar[0]?.url}
                     alt="avatar"
                     className="h-full w-full object-cover"
                   />
@@ -74,18 +53,18 @@ function VideoDetail() {
               </div>
               <div className="flex flex-col ml-3 ">
                 <div className="text-black dark:text-white text-md font-semibold flex items-center">
-                  {video?.author?.title}
-                  {video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
+                  {RequestVideosByID?.data?.data?.video?.author?.title}
+                  {RequestVideosByID?.data?.data?.video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
                     <BsFillCheckCircleFill className="text-black/[0.5] dark:text-white/[0.5] text-[12px] ml-1" />
                   )}
                 </div>
                 <div className="text-black/[0.7] dark:text-white/[0.7] text-sm">
-                  {video?.author?.stats?.subscribersText}
+                  405M
                 </div>
               </div>
             </div>
             <div className="flex text-black dark:text-white mt-4 md:mt-0">
-             
+
             </div>
           </div>
         </div>

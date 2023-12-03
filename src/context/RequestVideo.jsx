@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "./useAxios";
-import Loading from "../shared/Loading";
 
 const RequestVideo = (api) => {
     const Axios = useAxios();
@@ -13,11 +12,9 @@ const RequestVideo = (api) => {
         }
     })
 
-    if (isPending) {
-        return <Loading />
-    }
-
+ 
     return { isPending, refetch, data };
+
 };
 
 export default RequestVideo;

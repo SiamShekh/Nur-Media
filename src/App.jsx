@@ -4,6 +4,8 @@ import SearchResult from "./components/SearchResult";
 import VideoDetail from "./components/VideoDetail";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
+import VideoList from "./components/Admin/VideoList";
+import AddVideo from "./components/Admin/AddVideo";
 
 function App() {
   
@@ -19,6 +21,9 @@ function App() {
         <Route path="/" element={<Feed />} />
         <Route path="/searchResult/:searchQuery" element={<SearchResult />} />
         <Route path="/video/:id" element={<VideoDetail />} />
+        <Route path="/admin" element={<VideoList />} />
+        <Route path="/addvideo" element={<AddVideo />} />
+
       </Routes>
       
     </div>

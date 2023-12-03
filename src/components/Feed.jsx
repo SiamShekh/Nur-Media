@@ -1,12 +1,10 @@
-import { useContext, useEffect } from "react";
-import { Context } from "../context/ContextApi";
+import { useEffect } from "react";
 import LeftNav from "./LeftNav";
 import VideoCard from "./VideoCard";
 import RequestVideo from "../context/RequestVideo";
 import Loading from "../shared/Loading";
 
 const Feed = () => {
-  const { loading, searchResult } = useContext(Context);
 
   useEffect(() => {
     document.getElementById("root").classList.remove("custom-h");
@@ -15,6 +13,10 @@ const Feed = () => {
 
   const RequestVideos = RequestVideo('/video');
 
+  console.log(RequestVideos?.isPending);
+  if (RequestVideos?.isPending) {
+      return <Loading />
+  } 
  
   return (
     <div className="flex flex-row h-[calc(100%-56px)]">

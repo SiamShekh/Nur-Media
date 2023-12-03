@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState, useEffect } from "react";
-import { fetchDataFromApi } from "../utils/Api";
 
 export const Context = createContext();
 
@@ -10,16 +9,16 @@ export const AppContext = (props) => {
   const [selectcategories, setSelectCategories] = useState("New");
   const [mobileMenu, setMobileMenu] = useState(false);
 
-  useEffect(() => {
-    fetchSelectedCategoryData(selectcategories);
-  }, [selectcategories]);
+  // useEffect(() => {
+  //   fetchSelectedCategoryData(selectcategories);
+  // }, [selectcategories]);
 
-  const fetchSelectedCategoryData = (query) => {
-    fetchDataFromApi(`search/?q=${query}`).then(({ contents }) => {
-      setSearchResult(contents);
-      setLoading(false);
-    });
-  };
+  // const fetchSelectedCategoryData = (query) => {
+  //   fetchDataFromApi(`search/?q=${query}`).then(({ contents }) => {
+  //     setSearchResult(contents);
+  //     setLoading(false);
+  //   });
+  // };
 
   return (
     <Context.Provider

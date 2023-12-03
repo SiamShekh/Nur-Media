@@ -39,7 +39,7 @@ function LeftNav() {
                 icon={item.icon}
                 action={() => {
                   clickHandle(item.name, item.type);
-                  navigate("/");
+                  navigate(item.link);
                 }}
                 className={`${
                   selectcategories === item.name
