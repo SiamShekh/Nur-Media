@@ -6,9 +6,10 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import VideoList from "./components/Admin/VideoList";
 import AddVideo from "./components/Admin/AddVideo";
+import Footer from "./components/Footer";
 
 function App() {
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -23,9 +24,9 @@ function App() {
         <Route path="/video/:id" element={<VideoDetail />} />
         <Route path="/admin" element={<VideoList />} />
         <Route path="/addvideo" element={<AddVideo />} />
-
       </Routes>
-      
+      <Footer />
+
     </div>
   );
 }
