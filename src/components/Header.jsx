@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import ytlogo from "/logo.png";
 import ytlogo2 from "/logo2.png";
 import logo from "/youtube.png";
 
@@ -38,7 +37,7 @@ const Header = () => {
   const pageName = pathname?.split("/")?.filter(Boolean)?.[0];
 
   return (
-    <div className="sticky top-0 z-20 flex flex-row items-center justify-between h-20 py-3 px-4 md:px-5 bg-white dark:bg-black">
+    <div className="sticky top-0 z-20 flex flex-row items-center justify-between h-20 py-3 px-4 md:px-5 bg-white dark:bg-[#1D232A] border-b-2">
       {loading && <Loader />}
 
       <div className="flex h-5 items-center">
@@ -56,12 +55,7 @@ const Header = () => {
         )}
         <Link to="/" className="flex h-5 items-center">
           <img
-            className="hidden dark:hidden md:block h-8"
-            src={ytlogo}
-            alt="Youtube"
-          />
-          <img
-            className=" hidden dark:md:block h-8"
+            className="hidden dark:hidden md:block h-14"
             src={ytlogo2}
             alt="Youtube"
           />
@@ -91,9 +85,11 @@ const Header = () => {
       </div>
       <div className="flex items-center">
         <div className="hidden md:flex">
-          <div className="flex items-center justify-center h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]">
-            <RiVideoAddLine className="text-black dark:text-white text-xl cursor-pointer" />
-          </div>
+          <Link to={'/admin'}>
+            <div className="flex items-center justify-center h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]">
+              <RiVideoAddLine className="text-black dark:text-white text-xl cursor-pointer" />
+            </div>
+          </Link>
           <div className="flex items-center justify-center ml-2 h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]">
             <FiBell className="text-black dark:text-white text-xl cursor-pointer" />
           </div>

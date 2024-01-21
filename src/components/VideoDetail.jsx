@@ -21,18 +21,18 @@ function VideoDetail(video) {
   }
 
   console.log();
-  
+
   return (
-    <div className="flex justify-center flex-row  bg-white dark:bg-black lg:mx-10">
+    <div className="flex justify-center flex-row  bg-white dark:bg-[#1D232A] lg:mx-10">
       <div className="w-full max-w-[1280px] flex flex-col lg:flex-row">
-        <div className="flex flex-col lg:w-[calc(100%-350px)] xl:w-[calc(100%-400px)] px-4 py-3 lg:py-6 overflow-y-auto">
-          <div className="h-[200px] md:h-[400px] lg:h-[400px] xl:h-[550px] ml-[-16px] lg:ml-0 mr-[-16px] lg:mr-0">
+        <div className="flex flex-col lg:w-[calc(100%-350px)] xl:w-[calc(100%-420px)] px-4 py-3 lg:py-6 overflow-y-auto">
+          <div className="h-[200px] md:h-[400px] lg:h-[400px] ml-[-16px] lg:ml-0 mr-[-16px] lg:mr-0 rounded-3xl">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
               controls
               width="100%"
               height="100%"
-              style={{ backgroundColor: "#00000" }}
+              style={{ backgroundColor: "#00000", objectFit: "revert", borderRadius: "30px", }}
               playing={true}
               onProgress={true}
             />

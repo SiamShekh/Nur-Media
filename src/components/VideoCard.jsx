@@ -2,29 +2,30 @@
 import { Link } from "react-router-dom";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { abbreviateNumber } from "js-abbreviation-number";
-
 import VideoLength from "../shared/VideoLength";
+
 function VideoCard({ video }) {
   return (
     <Link to={`/video/${video?.videoId}`}>
-      <div className="flex flex-col mb-8">
-        <div className="relative h-48 md:h-52 rounded-2xl overflow-hidden">
+      <div className="flex flex-col  rounded-lg">
+        <div className="relative h-48 md:h-40 rounded-2xl p-1">
           <img
-            src={video?.thumbnails[0]?.url}
+            src={`https://img.youtube.com/vi/${video?.videoId}/mqdefault.jpg`}
             alt="thumbnails"
-            className="h-full w-full object-cover"
+            className="h-full w-full rounded-xl"
           />
           {video.lengthSeconds && <VideoLength time={video?.lengthSeconds} />}
         </div>
         <div className="flex text-white mt-3">
           <div className="flex items-start">
-            <div className="flex h-9 w-9 rounded-full overflow-hidden ">
+            <div className="flex max-w-20 justify-center items-center  rounded-full overflow-hidden ">
               <img
                 src={video?.author?.avatar[0]?.url}
                 alt="avatar"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover "
               />
             </div>
+
             <div className="flex flex-col ml-3 overflow-hidden">
               <span className="text-sm font-semibold line-clamp-2 text-black dark:text-white">
                 {video?.title}

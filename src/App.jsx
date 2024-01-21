@@ -16,7 +16,7 @@ function App() {
 
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full bg-white dark:bg-[#1D232A] w-full">
       <Header />
       <Routes>
         <Route path="/" element={<Feed />} />
@@ -25,7 +25,6 @@ function App() {
         <Route path="/admin" element={<VideoList />} />
         <Route path="/addvideo" element={<AddVideo />} />
       </Routes>
-      <Footer />
 
     </div>
   );
